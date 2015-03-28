@@ -1,0 +1,4 @@
+.DS_Store
+.vagrant
+package/build/
+!package/build/.gitkeep
