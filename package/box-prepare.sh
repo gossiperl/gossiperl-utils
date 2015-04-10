@@ -24,21 +24,21 @@ else
   echo "Apt already done."
 fi
 
-# echo " === OpenSSL"
+echo " === OpenSSL"
 
-# if [ ! -f $STATE_ROOT/openssl ]; then
-#   echo "Installing OpenSSL..."
-#   curl https://www.openssl.org/source/openssl-$OPENSSL_V.tar.gz | tar xz
-#   cd openssl-$OPENSSL_V
-#   ./config
-#   make
-#   make install
-#   ln -sf /usr/local/ssl/bin/openssl `which openssl`
-#   cd ..
-#   echo -e `date` > $STATE_ROOT/openssl
-# else
-#   echo "OpenSSL already done."
-# fi
+if [ ! -f $STATE_ROOT/openssl ]; then
+  echo "Installing OpenSSL..."
+  curl https://www.openssl.org/source/openssl-$OPENSSL_V.tar.gz | tar xz
+  cd openssl-$OPENSSL_V
+  ./config
+  make
+  make install
+  ln -sf /usr/local/ssl/bin/openssl `which openssl`
+  cd ..
+  echo -e `date` > $STATE_ROOT/openssl
+else
+  echo "OpenSSL already done."
+fi
 
 echo ""
 echo " === Kerl"
@@ -61,7 +61,7 @@ if [ ! -d $PACKAGING_ROOT/erlang-$ERL_V ]; then
   $PACKAGING_ROOT/kerl build  $ERL_V $ERL_V
   $PACKAGING_ROOT/kerl install $ERL_V $PACKAGING_ROOT/erlang-$ERL_V
   if [ -z "$( cat /etc/bash.bashrc | grep erlang-current )" ]; then
-    echo ". $ERL_V $PACKAGING_ROOT/erlang-$ERL_V/activate" >> /etc/bash.bashrc
+    echo ". $PACKAGING_ROOT/erlang-$ERL_V/activate" >> /etc/bash.bashrc
   fi
   /bin/sleep 5
 else
