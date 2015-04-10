@@ -10,7 +10,7 @@ RELEASE_CREATE=false
 
 # DEB packaging
 BUILD_TIMESTAMP=`TZ=UTC date +%Y%m%d%H%M`
-TARGET_DIR=/vagrant/package-deb/build
+TARGET_DIR=/vagrant/package/build
 TEMP_DIR=/tmp/deb-src
 INSTALL_PATH=/opt/gossiperl
 ARCHITECTURE=all
