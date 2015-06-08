@@ -34,6 +34,7 @@ cat > $TEMP_DIR/DEBIAN/preinst <<EOF
 #!/bin/sh
 
 mkdir -p /etc/gossiperl
+mkdir -p /var/log/gossiperl
 
 cat > /etc/gossiperl/start.sh <<'EOP'
 #!/bin/bash
